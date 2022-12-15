@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* CSS Custom Properties */
 :root {
   --white: #FFFFFF;
@@ -21,7 +25,11 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-image: radial-gradient(
+    farthest-corner at 40px 40px,
+    rgb(51, 235, 255) 0%,
+    rgb(32, 25, 115) 100%
+  );
   padding: 2vmin;
   height: 100vh;
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AiOutlineMenu } from 'react-icons/ai'
 import * as userService from '../../utilities/users-service';
 
 export default function NavBar({ user, setUser }) {
@@ -13,8 +14,6 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       <Link to="/orders/new">New Order</Link>
       &nbsp;&nbsp;
-      <span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>
   );
 }
