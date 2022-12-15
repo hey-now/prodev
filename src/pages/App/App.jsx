@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import NewProjectPage from '../NewProjectPage/NewProjectPage';
+import ProjectsPage from '../ProjectsPage/ProjectsPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
@@ -18,7 +18,7 @@ export default function App() {
           <>
           {/* Sidebar */}
           {activeMenu ? (
-            <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
+            <div className='w-72 h-full fixed sidebar dark:bg-secondary-dark-bg bg-white'>
               <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
             </div>
           ) : (
@@ -34,8 +34,8 @@ export default function App() {
 
               <Routes>
                 {/* Route components in here */}
-                <Route path="/new" element={<NewOrderPage />} />
-                <Route path="/orders" element={<OrderHistoryPage />} />
+                <Route path="/projects/new" element={<NewProjectPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
               </Routes>
               </div>
           </div>
