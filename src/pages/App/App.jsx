@@ -27,16 +27,17 @@ export default function App() {
             </div>
           )}
           <div className={
-            `dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`
+            `dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2 -mt-10'}`
           }>
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
-            <NavBar user={user} setUser={setUser} />
-            </div>
-            <Routes>
-              {/* Route components in here */}
-              <Route path="/orders/new" element={<NewOrderPage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
-            </Routes>
+            <NavBar user={user} setUser={setUser} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+
+              <Routes>
+                {/* Route components in here */}
+                <Route path="/new" element={<NewOrderPage />} />
+                <Route path="/orders" element={<OrderHistoryPage />} />
+              </Routes>
+              </div>
           </div>
           </>
           :

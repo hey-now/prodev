@@ -4,7 +4,7 @@ import { SlLogout } from 'react-icons/sl'
 import * as userService from '../../utilities/users-service';
 
 export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
-    const activeLink = 'flex items-center gap-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:sky-200';
+    const activeLink = 'flex items-center gap-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:black';
     const normalLink = 'flex items-center gap-5 pl4 pt-3 pb-2.5 rounded-lg text-gray-700 hover:bg-sky-200 m-2';
 
     function handleLogOut() {
@@ -25,18 +25,18 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                         tracking-tight dark:text-white 
                         text-slate-900'>
                             <span>Logo</span>
-                            <button 
-                                type='button'
-                                onClick={() => setActiveMenu(false)}
-                                className='text-xl rounded-full p-1 hover:bg-sky-200
-                                mt-2 ml-20 block text-slate-900'><MdOutlineCancel />
-                            </button>
                     </Link>
+                    <button 
+                        type='button'
+                        onClick={() => setActiveMenu(false)}
+                        className='text-xl rounded-full p-1 hover:bg-sky-200
+                        mt-2 ml-20 block text-slate-900'><MdOutlineCancel />
+                    </button>
                 </div>
                 <p className='text-xl'>Welcome, {user.name}</p>
                 <Link to="" onClick={handleLogOut}>
                     <div className=''>
-                        <p>LogOut</p>
+                        <button className='hover:bg-sky-200'>LogOut</button>
                     </div>
                 </Link>
                 <div className='mt-20'>
@@ -45,7 +45,7 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                     </NavLink>
                     <hr />
                     <br />
-                    <NavLink to={'/orders/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                    <NavLink to={'/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
                         Create New Project
                     </NavLink>
                     <hr />
