@@ -1,11 +1,12 @@
 import { Link, NavLink } from 'react-router-dom'
 import { MdOutlineCancel } from 'react-icons/md'
+import { AiOutlineFileAdd } from 'react-icons/ai'
 import { SlLogout } from 'react-icons/sl'
 import * as userService from '../../utilities/users-service';
 
 export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
-    const activeLink = 'flex items-center gap-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:black';
-    const normalLink = 'flex items-center gap-5 pl4 pt-3 pb-2.5 rounded-lg text-gray-700 hover:bg-sky-200 m-2';
+    const activeLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:black';
+    const normalLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-gray-700 hover:bg-sky-200 m-2';
 
     function handleLogOut() {
         userService.logOut();
@@ -44,7 +45,7 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                     <hr />
                     <br />
                     <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
+                        Create New Project <span className='text-xl'><AiOutlineFileAdd /></span> 
                     </NavLink>
                     <hr />
                     <br />
