@@ -52,6 +52,8 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                     <NavLink to={'/projects'} className={({ isActive }) => isActive ? activeLink : normalLink}>
                         Projects
                     </NavLink>
+                    <hr />
+                    <br />
                     <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
                         Create New Project
                     </NavLink>

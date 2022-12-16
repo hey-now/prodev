@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    title: { type: String, required: true},
+    projectTitle: { type: String, required: true},
     description: String,
     projectOwner: {type: String, required: true},
-    status: {
+    projectStatus: {
         type: String,
         enum: ['Planning', 'In Progress', 'Stuck', 'Complete']
     },

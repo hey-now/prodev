@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import * as projectsAPI from '../../utilities/projects-api';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
@@ -10,7 +11,21 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [projects, setProjects] = useState([]);
   const [activeMenu, setActiveMenu] = useState(true)
+
+  async function addProject(project) {
+    const newProject = await projectsAPI.create(project);
+    setProjects([...projects, newProject]);
+  }
+
+  useEffect(function() {
+    async function getProjects() {
+      const projects = await projectsAPI.getAll();
+      setProjects(projects);
+    }
+    getProjects();
+  }, []);
 
   return (
     <main className="App">
@@ -34,8 +49,8 @@ export default function App() {
 
               <Routes>
                 {/* Route components in here */}
-                <Route path="/projects/new" element={<NewProjectPage />} />
-                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/projects/new" element={<NewProjectPage user={user} setUser={setUser } addProject={addProject}/>} />
+                <Route path="/projects" element={<ProjectsPage user={user} setUser={setUser} projects={projects}/>} />
               </Routes>
               </div>
           </div>

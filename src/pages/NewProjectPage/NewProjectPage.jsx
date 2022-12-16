@@ -7,7 +7,7 @@ export default function NewProjectPage( { addProject } ) {
   const [projectStartDate, setProjectStartDate] = useState (new Date());
   const [projectEndDate, setProjectEndDate] = useState (new Date());
 
-  function submitAddNote(evt) {
+  function submitAddProject(evt) {
     evt.preventDefault();
     addProject(formData);
     setFormData('')
@@ -21,7 +21,7 @@ export default function NewProjectPage( { addProject } ) {
     <>
     <h1>Create A New Project</h1>
     <br />
-    <form className='m-10'>
+    <form className='m-10' onSubmit={submitAddProject}>
       <label> Project Title</label>
       <input 
       type="text" 
@@ -68,7 +68,7 @@ export default function NewProjectPage( { addProject } ) {
           selected={projectEndDate} 
           onChange={(date:Date) => setProjectEndDate(date)} />
       </div>
-        <button className='hover:bg-sky-200'>Create Project</button>
+        <button type='submit' className='hover:bg-sky-200'>Create Project</button>
     </form>
   </>
   );

@@ -8,8 +8,9 @@ const taskSchema = new Schema({
         type: String,
         enum: ['Planning', 'In Progress', 'Stuck', 'Complete']
     },
-    dueDate: {type: Date, required: true},
-    owner: {type: String, required: true}
+    taskStartDate: {type: Date, required: true},
+    taskEndDate: {type: Date, required: true},
+    taskOwner: {type: String, required: true}
 },{
     timestamps: true
 });
