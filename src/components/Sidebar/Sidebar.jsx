@@ -12,11 +12,11 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
         setUser(null);
     }
     return(
-        <div className='ml-3 hscreen md:overflow-hidden overflow-auto
-        md:hover:overflow-auto pb-10'>
+        <div className='ml-3 hscreen md:overflow-hidden overflow-auto flex-grow-0
+        md:hover:overflow-auto pb-10 shadow-2xl h-full'>
             {activeMenu && (
                 <>
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center overflow-auto'>
                     <Link 
                         to='/' 
                         onClick={() => {}} 
@@ -34,11 +34,9 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                     </button>
                 </div>
                 <p className='text-xl'>Welcome, {user.name}</p>
-                <Link to="" onClick={handleLogOut}>
                     <div className=''>
-                        <button className='hover:bg-sky-200'>LogOut</button>
+                        <button onClick={handleLogOut} className='hover:bg-sky-200'>LogOut</button>
                     </div>
-                </Link>
                 <div className='mt-20'>
                     <NavLink to={'/'} className={({ isActive }) => isActive ? activeLink : normalLink}>
                         Home
@@ -53,6 +51,46 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                     <NavLink to={'/projects'} className={({ isActive }) => isActive ? activeLink : normalLink}>
                         Projects
                     </NavLink>
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
+                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
+                        Create New Project
+                    </NavLink>
+                    <hr />
+                    <br />
                 </div>
                 </>
             )}
