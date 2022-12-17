@@ -20,9 +20,7 @@ export default function App() {
   }
 
   useEffect(function() {
-    console.log('dfgdfg')
     async function getProjects() {
-      console.log('second log')
       const allProjects = await projectsAPI.getAll();
       setProjects(allProjects);
     }
@@ -36,11 +34,11 @@ export default function App() {
           {/* Sidebar */}
           {activeMenu ? (
             <div className='w-72 h-full fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
+              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects}/>
             </div>
           ) : (
             <div className='w-0 dark:bg-secondary-dark-bg'>
-              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu}/>
+              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects}/>
             </div>
           )}
           <div className={

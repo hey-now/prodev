@@ -3,10 +3,21 @@ import { MdOutlineCancel } from 'react-icons/md'
 import { AiOutlineFileAdd } from 'react-icons/ai'
 import { SlLogout } from 'react-icons/sl'
 import * as userService from '../../utilities/users-service';
+import { useEffect } from 'react';
+import * as projectsAPI from '../../utilities/projects-api';
+import ProjectItemPage from '../../pages/ProjectItemPage/ProjectItemPage';
 
-export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
+export default function Sidebar({ user, setUser, activeMenu, setActiveMenu, projects, setProjects }) {
     const activeLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:black';
     const normalLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-gray-700 hover:bg-sky-200 m-2';
+
+    useEffect(function() {
+        async function getProjects() {
+          const allProjects = await projectsAPI.getAll();
+          setProjects(allProjects);
+        }
+        getProjects();
+      }, []);
 
     function handleLogOut() {
         userService.logOut();
@@ -52,48 +63,12 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu }) {
                     <NavLink to={'/projects'} className={({ isActive }) => isActive ? activeLink : normalLink}>
                         Projects
                     </NavLink>
+                    <div>
+                    <div><ProjectItemPage projects={projects} /></div>
+                    </div>
                     <hr />
                     <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
-                    <NavLink to={'/projects/new'} className={({ isActive }) => isActive ? activeLink : normalLink}>
-                        Create New Project
-                    </NavLink>
-                    <hr />
-                    <br />
+                    
                 </div>
                 </>
             )}
