@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as projectsAPI from '../../utilities/projects-api';
-import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewProjectPage from '../NewProjectPage/NewProjectPage';
@@ -20,9 +20,11 @@ export default function App() {
   }
 
   useEffect(function() {
+    console.log('dfgdfg')
     async function getProjects() {
-      const projects = await projectsAPI.getAll();
-      setProjects(projects);
+      console.log('second log')
+      const allProjects = await projectsAPI.getAll();
+      setProjects(allProjects);
     }
     getProjects();
   }, []);
@@ -46,12 +48,11 @@ export default function App() {
           }>
             <div className='relative md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
             <NavBar user={user} setUser={setUser} activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-
-              <Routes>
-                {/* Route components in here */}
-                <Route path="/projects/new" element={<NewProjectPage user={user} setUser={setUser } addProject={addProject}/>} />
-                <Route path="/projects" element={<ProjectsPage user={user} setUser={setUser} projects={projects}/>} />
-              </Routes>
+            <Routes>
+              {/* Route components in here */}
+              <Route path="/projects/new" element={<NewProjectPage user={user} setUser={setUser } addProject={addProject}/>} />
+              <Route path="/projects" element={<ProjectsPage user={user} setUser={setUser} projects={projects}/>} />
+            </Routes>
               </div>
           </div>
           </>

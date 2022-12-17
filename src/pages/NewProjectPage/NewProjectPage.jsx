@@ -10,7 +10,7 @@ export default function NewProjectPage( { addProject } ) {
   function submitAddProject(evt) {
     evt.preventDefault();
     addProject(formData);
-    setFormData('')
+    setFormData({})
   }
 
   function handleChange(evt) {
@@ -23,27 +23,38 @@ export default function NewProjectPage( { addProject } ) {
     <br />
     <form className='m-10' onSubmit={submitAddProject}>
       <label> Project Title</label>
-      <input 
+      <input
+      name='projectTitle' 
+      value={formData.projectTitle}
+      onChange={handleChange}
       type="text" 
       placeholder='Enter New Project Title'
       className='placeholder:italic block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm'
       />
       <label> Description</label>
       <textarea 
+      name='description'
+      value={formData.description}
+      onChange={handleChange}
       type="text" 
       placeholder='Enter Description'
       className='placeholder:italic block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm'
       >
       </textarea>
       <label> Project Owner</label>
-      <input 
+      <input
+      name='projectOwner' 
+      value={formData.projectOwner}
+      onChange={handleChange}
       type="text" 
       placeholder='Enter Name Here'
       className='placeholder:italic block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm'
       />
       <label>Status</label>
       <select 
-      name="status" 
+      name="projectStatus" 
+      value={formData.projectStatus}
+      onChange={handleChange}
       id="status"
       className='block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md sm:text-sm'
       >
@@ -59,14 +70,20 @@ export default function NewProjectPage( { addProject } ) {
       <div className='flex'>
       <label className='pr-10'>Start Date:</label>
         <DatePicker 
+          name='projectStartDate'
+          value={formData.projectStartDate}
           className=' mt-10 block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md sm:text-sm' 
           selected={projectStartDate} 
-          onChange={(date:Date) => setProjectStartDate(date)} />
+          onChange={(date:Date) => setProjectStartDate(date)} 
+          />
         <label className='pr-10'>End Date:</label>
         <DatePicker 
+          name='projectEndDate'
           className='mt-10 block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md sm:text-sm' 
+          value={formData.projectEndDate}
           selected={projectEndDate} 
-          onChange={(date:Date) => setProjectEndDate(date)} />
+          onChange={(date:Date) => setProjectEndDate(date)} 
+          />
       </div>
         <button type='submit' className='hover:bg-sky-200'>Create Project</button>
     </form>
