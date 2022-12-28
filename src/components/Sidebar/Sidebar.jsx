@@ -69,7 +69,7 @@ export default function Sidebar({activeMenu, setActiveMenu}) {
                     <div><ProjectItemPage projects={projects} /></div>
                     </div>
                     <hr />
-                    <br />  
+                    <br />
                 </div>
                 </>
             )}
