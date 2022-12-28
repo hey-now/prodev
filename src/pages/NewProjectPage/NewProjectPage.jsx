@@ -4,8 +4,6 @@ import "react-datepicker/dist/react-datepicker.css"
 
 export default function NewProjectPage( { addProject } ) {
   const [formData, setFormData] = useState('');
-  const [projectStartDate, setProjectStartDate] = useState (new Date());
-  const [projectEndDate, setProjectEndDate] = useState (new Date());
 
   function submitAddProject(evt) {
     evt.preventDefault();
@@ -63,28 +61,24 @@ export default function NewProjectPage( { addProject } ) {
         <option value="Stuck">Stuck</option>
         <option value="Complete">Complete</option>
       </select>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className='flex'>
-      <label className='pr-10'>Start Date:</label>
-        <DatePicker 
-          name='projectStartDate'
-          value={formData.projectStartDate}
-          className=' mt-10 block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md sm:text-sm' 
-          selected={projectStartDate} 
-          onChange={(date:Date) => setProjectStartDate(date)} 
-          />
-        <label className='pr-10'>End Date:</label>
-        <DatePicker 
-          name='projectEndDate'
-          className='mt-10 block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md sm:text-sm' 
-          value={formData.projectEndDate}
-          selected={projectEndDate} 
-          onChange={(date:Date) => setProjectEndDate(date)} 
-          />
-      </div>
+      <label className=''>Start Date:</label>
+      <input
+      name='projectStartDate' 
+      value={formData.projectStartDate}
+      onChange={handleChange}
+      type="date" 
+      placeholder='Enter Start Date Here'
+      className='placeholder:italic block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm'
+      />
+      <label className='pr-10'>End Date:</label>
+      <input
+      name='projectEndDate' 
+      value={formData.projectEndDate}
+      onChange={handleChange}
+      type="date" 
+      placeholder='Enter End Date Here'
+      className='placeholder:italic block bg-white border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-md focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm'
+      />
         <button type='submit' className='hover:bg-sky-200'>Create Project</button>
     </form>
   </>

@@ -22,9 +22,9 @@ export default function ProjectDetailPage({ projects }) {
         <br />
         <div>Project Status: {project.projectStatus}</div>
         <br />
-        <div>Start Date: {project.projectStartDate}</div>
+        <div>Start Date: {new Date(project.projectStartDate).toLocaleDateString()}</div>
         <br />
-        <div>End Date: {project.projectEndDate}</div>
+        <div>End Date: {new Date(project.projectEndDate).toLocaleDateString()}</div>
         <br />
         </>
     );

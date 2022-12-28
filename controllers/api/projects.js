@@ -9,7 +9,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const projects = await Project.find({});
+    const projects = await Project.find({user: req.user._id});
     // re-sort based upon the sortOrder of the populated categories
     res.json(projects);
   }
