@@ -1,17 +1,15 @@
 import { Link, NavLink } from 'react-router-dom'
 import { MdOutlineCancel } from 'react-icons/md'
 import { AiOutlineFileAdd } from 'react-icons/ai'
-import { getUser } from '../../utilities/users-service';
-import { useEffect, useState } from 'react';
+import { SlLogout } from 'react-icons/sl'
 import * as userService from '../../utilities/users-service';
+import { useEffect } from 'react';
 import * as projectsAPI from '../../utilities/projects-api';
 import ProjectItemPage from '../../pages/ProjectItemPage/ProjectItemPage';
 
-export default function Sidebar({activeMenu, setActiveMenu}) {
+export default function Sidebar({ user, setUser, activeMenu, setActiveMenu, projects, setProjects }) {
     const activeLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:black';
     const normalLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-gray-700 hover:bg-sky-200 m-2';
-    const [projects, setProjects] = useState([]);
-    const [user, setUser] = useState(getUser());
 
     useEffect(function() {
         async function getProjects() {
@@ -70,9 +68,11 @@ export default function Sidebar({activeMenu, setActiveMenu}) {
                     </div>
                     <hr />
                     <br />
+                    
                 </div>
                 </>
             )}
+
         </div>
     );
 }

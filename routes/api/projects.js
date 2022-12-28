@@ -6,7 +6,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // GET /api/projects
 router.get('/', projectsCtrl.index);
 // GET /api/projects/:id
-// router.get('/:id', ensureLoggedIn, projectsCtrl.show);
+router.get('/:id', ensureLoggedIn, projectsCtrl.show);
 // PUT /api/projects/update/:id
 // router.put('/update/:id', ensureLoggedIn, projectsCtrl.updateNote);
 // POST /api/projects

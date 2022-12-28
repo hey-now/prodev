@@ -3,7 +3,7 @@ const Project = require('../../models/project');
 module.exports = {
     index,
     // updateProject,
-    // show,
+    show,
     create,
     // delete: deleteProject
 };
@@ -26,10 +26,10 @@ async function index(req, res) {
 //   }
 // }
   
-//   async function show(req, res) {
-//     const note = await Note.findById(req.params.id);
-//     res.json(note);
-//   }
+  async function show(req, res) {
+    const note = await Note.findById(req.params.id);
+    res.json(note);
+  }
 
   async function create(req, res) {
     req.body.user = req.user._id;

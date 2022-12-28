@@ -8,6 +8,7 @@ import NewProjectPage from '../NewProjectPage/NewProjectPage';
 import ProjectsPage from '../ProjectsPage/ProjectsPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import ProjectDetailPage from '../../ProjectDetailPage/ProjectDetailPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -50,6 +51,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/projects/new" element={<NewProjectPage user={user} setUser={setUser } addProject={addProject}/>} />
               <Route path="/projects" element={<ProjectsPage user={user} setUser={setUser} projects={projects}/>} />
+              <Route path="/projects/:id" element={<ProjectDetailPage projects={projects}/>} />
             </Routes>
               </div>
           </div>
