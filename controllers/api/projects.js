@@ -2,7 +2,7 @@ const Project = require('../../models/project');
 
 module.exports = {
     index,
-    // updateProject,
+    updateProject,
     show,
     create,
     // delete: deleteProject
@@ -14,17 +14,17 @@ async function index(req, res) {
     res.json(projects);
   }
 
-// async function updateNote(req, res) {
-//   try {
-//     await Note.findByIdAndUpdate(
-//       {_id: req.params.id}, req.body
-//       )
-//     const note = await Note.find({user: req.user._id})
-//     res.json(note);
-//   } catch (err) { 
-//     return next(err);
-//   }
-// }
+async function updateProject(req, res) {
+  try {
+    await Project.findByIdAndUpdate(
+      {_id: req.params.id}, req.body
+      )
+    const project = await Project.find({user: req.user._id})
+    res.json(project);
+  } catch (err) { 
+    return next(err);
+  }
+}
   
   async function show(req, res) {
     const note = await Note.findById(req.params.id);

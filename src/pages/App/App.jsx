@@ -1,23 +1,32 @@
 import { useState, useEffect } from 'react';
 import * as projectsAPI from '../../utilities/projects-api';
 import { getUser } from '../../utilities/users-service';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewProjectPage from '../NewProjectPage/NewProjectPage';
 import ProjectsPage from '../ProjectsPage/ProjectsPage';
 import NavBar from '../../components/NavBar/NavBar';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import ProjectDetailPage from '../../ProjectDetailPage/ProjectDetailPage';
+import ProjectDetailPage from '../ProjectDetailPage/ProjectDetailPage';
+import UpdateProjectPage from '../UpdateProjectPage/UpdateProjectPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [projects, setProjects] = useState([]);
   const [activeMenu, setActiveMenu] = useState(true)
+  const navigate = useNavigate();
 
   async function addProject(project) {
     const newProject = await projectsAPI.create(project);
     setProjects([...projects, newProject]);
+  }
+
+  async function handleUpdateProject(projectFormData, id) {
+    const handleUpdatedProject = await projectsAPI.updateProject(id, projectFormData);
+    const projects = await projectsAPI.getAll();
+    setProjects(projects);
+    navigate(`/projects/${id}`);
   }
 
   useEffect(function() {
@@ -52,6 +61,7 @@ export default function App() {
               <Route path="/projects/new" element={<NewProjectPage user={user} setUser={setUser } addProject={addProject}/>} />
               <Route path="/projects" element={<ProjectsPage user={user} setUser={setUser} projects={projects}/>} />
               <Route path="/projects/:id" element={<ProjectDetailPage projects={projects}/>} />
+              <Route path="/projects/:id/update" element={<UpdateProjectPage handleUpdateProject={handleUpdateProject} projects={projects}/>} />
             </Routes>
               </div>
           </div>
