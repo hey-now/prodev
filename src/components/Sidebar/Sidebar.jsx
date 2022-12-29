@@ -36,7 +36,7 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu, proj
                         mt-4 flex text-xl font-extrabold 
                         tracking-tight dark:text-white 
                         text-slate-900'>
-                            <span>Logo</span>
+                            <span><img src="https://i.imgur.com/LEzQYlK.png" alt="Logo" /></span>
                     </Link>
                     <button 
                         type='button'
@@ -45,7 +45,9 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu, proj
                         mt-2 ml-20 block text-slate-900'><MdOutlineCancel />
                     </button>
                 </div>
+                <br />
                 <p className='text-xl'>Welcome, {user.name}</p>
+                <br />
                     <div className=''>
                         <button onClick={handleLogOut} className='hover:bg-sky-200'>LogOut</button>
                     </div>
