@@ -12,6 +12,6 @@ router.put('/update/:id', ensureLoggedIn, projectsCtrl.updateProject);
 // POST /api/projects
 router.post('/', ensureLoggedIn, projectsCtrl.create);
 // DELETE /api/projects/:id
-// router.delete('/:id', ensureLoggedIn, projectsCtrl.delete);
+router.delete('/:id', ensureLoggedIn, projectsCtrl.delete);
 
 module.exports = router;

@@ -13,9 +13,9 @@ export async function getById(id) {
 export async function create(project) {
     return sendRequest(BASE_URL, "POST", project);
 }
-// export async function deleteNote(id) {
-//     return sendRequest(`${BASE_URL}/${id}`, "DELETE");
-// }
+export async function deleteProject(id) {
+    return sendRequest(`${BASE_URL}/${id}`, "DELETE");
+}
 export async function updateProject(id, projectFormData) {
     return sendRequest(`${BASE_URL}/update/${id}`, "PUT", projectFormData);
 }

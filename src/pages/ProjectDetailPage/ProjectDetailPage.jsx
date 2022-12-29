@@ -1,7 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
-import UpdateProjectPage from "../UpdateProjectPage/UpdateProjectPage";
 
-export default function ProjectDetailPage({ projects }) {
+export default function ProjectDetailPage({ projects, handleDelete }) {
     let { id } = useParams();
     let project = projects.find((p) => p._id === id);
     const navigate = useNavigate();
@@ -18,6 +17,7 @@ export default function ProjectDetailPage({ projects }) {
         <hr />
         <br />
         <button onClick={() => navigate(`/projects/${project._id}/update`)}>Update</button>
+        <button onClick={() => handleDelete(project._id)}>Delete</button>
         <br />
         <hr />
         <br />

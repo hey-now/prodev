@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import * as projectsAPI from '../../utilities/projects-api';
 import ProjectItemPage from '../ProjectItemPage/ProjectItemPage';
 
-export default function ProjectsPage({ user, setUser }) {
+export default function ProjectsPage({ user, setUser, handleDelete }) {
   const [projects, setProjects] = useState([]);
 
   useEffect(function() {
@@ -18,7 +18,8 @@ export default function ProjectsPage({ user, setUser }) {
         <h1>{user.name}'s Projects Page</h1>
         <br />
         <br />
-        <div><ProjectItemPage projects={projects} /></div>
+        <div><ProjectItemPage projects={projects} handleDelete={handleDelete}/>
+        </div>
       </>
   );
 }

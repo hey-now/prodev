@@ -5,7 +5,7 @@ module.exports = {
     updateProject,
     show,
     create,
-    // delete: deleteProject
+    delete: deleteProject
 };
 
 async function index(req, res) {
@@ -37,8 +37,8 @@ async function updateProject(req, res) {
     res.json(project);
   }
   
-//   async function deleteNote(req, res) {
-//     req.body.user = req.user._id;
-//     const note = await Note.findByIdAndDelete(req.params.id);
-//     res.json(note);
-//   }
+  async function deleteProject(req, res) {
+    req.body.user = req.user._id;
+    const project = await Project.findByIdAndDelete(req.params.id);
+    res.json(project);
+  }

@@ -20,8 +20,14 @@ export default function App() {
   async function addProject(project) {
     const newProject = await projectsAPI.create(project);
     setProjects([...projects, newProject]);
+    navigate('/projects')
   }
-
+  async function handleDelete(id) {
+    await projectsAPI.deleteProject(id);
+    const remainingProjects = projects.filter(project => project._id !== id);
+    setProjects(remainingProjects);
+    navigate('/projects');
+  }
   async function handleUpdateProject(projectFormData, id) {
     const handleUpdatedProject = await projectsAPI.updateProject(id, projectFormData);
     const projects = await projectsAPI.getAll();
@@ -44,11 +50,11 @@ export default function App() {
           {/* Sidebar */}
           {activeMenu ? (
             <div className='w-72 h-full fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects}/>
+              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects} handleDelete={handleDelete}/>
             </div>
           ) : (
             <div className='w-0 dark:bg-secondary-dark-bg'>
-              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects}/>
+              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects} handleDelete={handleDelete}/>
             </div>
           )}
           <div className={
@@ -60,7 +66,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/projects/new" element={<NewProjectPage user={user} setUser={setUser } addProject={addProject}/>} />
               <Route path="/projects" element={<ProjectsPage user={user} setUser={setUser} projects={projects}/>} />
-              <Route path="/projects/:id" element={<ProjectDetailPage projects={projects}/>} />
+              <Route path="/projects/:id" element={<ProjectDetailPage projects={projects} handleDelete={handleDelete}/>} />
               <Route path="/projects/:id/update" element={<UpdateProjectPage handleUpdateProject={handleUpdateProject} projects={projects}/>} />
             </Routes>
               </div>
