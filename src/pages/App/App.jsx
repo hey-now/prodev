@@ -20,7 +20,7 @@ export default function App() {
   async function addProject(project) {
     const newProject = await projectsAPI.create(project);
     setProjects([...projects, newProject]);
-    navigate('/projects')
+    navigate('/projects');
   }
   async function handleDelete(id) {
     await projectsAPI.deleteProject(id);
@@ -50,11 +50,11 @@ export default function App() {
           {/* Sidebar */}
           {activeMenu ? (
             <div className='w-72 h-full fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects} handleDelete={handleDelete}/>
+              <Sidebar user={user} setUser={setUser} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects} handleDelete={handleDelete}/>
             </div>
           ) : (
             <div className='w-0 dark:bg-secondary-dark-bg'>
-              <Sidebar user={user} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects} handleDelete={handleDelete}/>
+              <Sidebar user={user} setUser={setUser} activeMenu={activeMenu} setActiveMenu={setActiveMenu} projects={projects} handleDelete={handleDelete}/>
             </div>
           )}
           <div className={

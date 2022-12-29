@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { MdOutlineCancel } from 'react-icons/md'
 import { AiOutlineFileAdd } from 'react-icons/ai'
 import { SlLogout } from 'react-icons/sl'
@@ -10,6 +10,7 @@ import ProjectItemPage from '../../pages/ProjectItemPage/ProjectItemPage';
 export default function Sidebar({ user, setUser, activeMenu, setActiveMenu, projects, setProjects }) {
     const activeLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-slate-900 text-md m-2 bg:black';
     const normalLink = 'flex items-center gap-5 ml-5 pl4 pt-3 pb-2.5 rounded-lg text-gray-700 hover:bg-sky-200 m-2';
+    const navigate = useNavigate();
 
     useEffect(function() {
         async function getProjects() {
@@ -22,6 +23,7 @@ export default function Sidebar({ user, setUser, activeMenu, setActiveMenu, proj
     function handleLogOut() {
         userService.logOut();
         setUser(null);
+        navigate('/');
     }
     return(
         <div className='ml-3 hscreen md:overflow-hidden overflow-auto flex-grow-0
